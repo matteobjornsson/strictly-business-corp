@@ -258,43 +258,17 @@
             border-radius: 10px;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-control {
+        /* Google Form iframe styling */
+        .google-form-container {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
+            margin-top: 20px;
         }
 
-        textarea.form-control {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background-color: var(--primary-color);
-            color: white;
+        .google-form-container iframe {
+            width: 100%;
+            height: 1000px;
             border: none;
-            padding: 12px 30px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 500;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .submit-btn:hover {
-            background-color: var(--secondary-color);
+            overflow: hidden;
         }
 
         /* Footer */
@@ -369,6 +343,10 @@
 
             .service-card {
                 margin-bottom: 30px;
+            }
+
+            .google-form-container iframe {
+                height: 1200px; /* Taller on mobile for better usability */
             }
         }
 
@@ -453,22 +431,25 @@
 
         /* Different hero image for happy hour mode */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/600?text=Corporate Meeting') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('business-hero.png') center/cover;
             transition: background 0.5s ease;
         }
 
         body.happy-hour .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1200/600?text=Office Party!') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('happy-hour-hero.png') center/cover;
         }
 
         /* Different about section image for happy hour mode */
         .about-image img {
-            content: url('/api/placeholder/500/300?text=Business Team');
+            content: url('business-about.png');
             transition: content 0.5s ease;
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         body.happy-hour .about-image img {
-            content: url('/api/placeholder/500/300?text=Happy Hour');
+            content: url('happy-hour-about.png');
         }
 
         /* Modal */
@@ -654,41 +635,11 @@
             <h3>Intern Application</h3>
             <p>Please complete the following application form to be considered for our prestigious internship program:</p>
 
-            <form id="internshipForm">
-                <div class="form-group">
-                    <label for="name">Full Name (As it appears on your corporate ID):</label>
-                    <input type="text" id="name" name="name" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email Address (Corporate preferred):</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="experience">Years of Intern Experience:</label>
-                    <input type="number" id="experience" name="experience" min="10" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="shotgun">Shotgun Personal Record (seconds):</label>
-                    <input type="number" id="shotgun" name="shotgun" step="0.1" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="coverLetter">Why Should We Hire You? (Be brief, we have meetings to attend):</label>
-                    <textarea id="coverLetter" name="coverLetter" class="form-control" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="buzzwords">List your top 5 corporate buzzwords (comma separated):</label>
-                    <input type="text" id="buzzwords" name="buzzwords" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="submit-btn">Submit Application</button>
-                </div>
-            </form>
+            <!-- Google Form Container -->
+            <div class="google-form-container">
+                <!-- Replace the src with your actual Google Form embed URL -->
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScBrrQ9iMeHkZD8fyqyCw4TIfUFsqIDNE21NaW20D3Aa_y58w/viewform?embedded=true">Loading…</iframe>
+            </div>
         </div>
     </div>
 </section>
@@ -740,7 +691,7 @@
         <h3>Application Submitted!</h3>
         <p>Thank you for applying to the Strictly Business Internship Program.</p>
         <p>Our team of professional synergizers will review your application and circle back if your corporate bandwidth aligns with our strategic initiatives.</p>
-        <p>Please allow 4-6 business weeks for a response.</p>
+        <p>Appointments will be decided Friday night at the Molly Brown</p>
     </div>
 </div>
 
@@ -759,46 +710,15 @@
         }
     });
 
-    // Form submission
-    const internshipForm = document.getElementById('internshipForm');
-    const thanksModal = document.getElementById('thanksModal');
+    // Form submission is now handled by Google Forms
+    // The modal can be triggered by Google Form's confirmation page or removed entirely
+    // For this example, we'll leave the modal code and show it if needed
+
     const closeModal = document.getElementById('closeModal');
+    const thanksModal = document.getElementById('thanksModal');
 
-    internshipForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Get form data
-        const formData = new FormData(internshipForm);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const experience = formData.get('experience');
-        const shotgun = formData.get('shotgun');
-        const coverLetter = formData.get('coverLetter');
-        const buzzwords = formData.get('buzzwords');
-
-        // Construct email body
-        const emailBody = `
-Name: ${name}
-Email: ${email}
-Years of Intern Experience: ${experience}
-Shotgun Time (seconds): ${shotgun}
-Cover Letter:
-${coverLetter}
-
-Top 5 Buzzwords:
-${buzzwords}
-`;
-
-        // Send email using mailto
-        const mailtoLink = `mailto:careers.strictlybusiness@gmail.com?subject=Internship Application: ${name}&body=${encodeURIComponent(emailBody)}`;
-        window.location.href = mailtoLink;
-
-        // Show thank you modal
-        thanksModal.style.display = 'flex';
-
-        // Reset form
-        internshipForm.reset();
-    });
+    // You could potentially show the modal after the Google Form submission
+    // by checking for a URL parameter or using postMessage to communicate between the iframe and parent
 
     // Close modal
     closeModal.addEventListener('click', function() {
