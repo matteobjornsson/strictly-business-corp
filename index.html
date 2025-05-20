@@ -452,41 +452,7 @@
             content: url('happy-hour-about.png');
         }
 
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        #thanksModal h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
+        /* Modal styles removed as they're no longer needed */
     </style>
 </head>
 <body>
@@ -684,17 +650,6 @@
 <!-- Happy Hour Toggle Button -->
 <button class="happy-hour-toggle" id="happyHourToggle">Switch to Happy Hour Mode</button>
 
-<!-- Thanks Modal -->
-<div id="thanksModal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" id="closeModal">&times;</span>
-        <h3>Application Submitted!</h3>
-        <p>Thank you for applying to the Strictly Business Internship Program.</p>
-        <p>Our team of professional synergizers will review your application and circle back if your corporate bandwidth aligns with our strategic initiatives.</p>
-        <p>Appointments will be decided Friday night at the Molly Brown</p>
-    </div>
-</div>
-
 <script>
     // Happy Hour Toggle
     const happyHourToggle = document.getElementById('happyHourToggle');
@@ -707,28 +662,6 @@
             happyHourToggle.textContent = 'Return to Business Mode';
         } else {
             happyHourToggle.textContent = 'Switch to Happy Hour Mode';
-        }
-    });
-
-    // Form submission is now handled by Google Forms
-    // The modal can be triggered by Google Form's confirmation page or removed entirely
-    // For this example, we'll leave the modal code and show it if needed
-
-    const closeModal = document.getElementById('closeModal');
-    const thanksModal = document.getElementById('thanksModal');
-
-    // You could potentially show the modal after the Google Form submission
-    // by checking for a URL parameter or using postMessage to communicate between the iframe and parent
-
-    // Close modal
-    closeModal.addEventListener('click', function() {
-        thanksModal.style.display = 'none';
-    });
-
-    // Close modal when clicking outside of it
-    window.addEventListener('click', function(e) {
-        if (e.target === thanksModal) {
-            thanksModal.style.display = 'none';
         }
     });
 
