@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strictly Business Corporation | Synergizing Excellence</title>
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2a6496;
+            --accent-color: #e2b13c;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/600') center/cover;
+            height: 30vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Careers Section */
+        .careers {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .job-posting {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .job-posting h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .job-section {
+            margin-top: 20px;
+        }
+
+        .job-section h4 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .job-section ul {
+            list-style-position: inside;
+            margin-left: 10px;
+        }
+
+        .job-section ul li {
+            margin-bottom: 5px;
+        }
+
+        /* Application Form */
+        .application-form {
+            margin-top: 50px;
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 20px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .about-text, .about-image {
+                flex: 100%;
+                padding: 0;
+                margin-bottom: 30px;
+            }
+
+            .service-card {
+                margin-bottom: 30px;
+            }
+        }
+
+        /* Corporate jargon words animation */
+        .buzzword-container {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .buzzword-scroll {
+            display: flex;
+            animation: scroll-left 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        .buzzword {
+            margin: 0 20px;
+            font-weight: 500;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Ticker tape animation */
+        .ticker-tape {
+            overflow: hidden;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 10px 0;
+            font-weight: bold;
+        }
+
+        .ticker-content {
+            white-space: nowrap;
+            animation: ticker 30s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Happy hour toggle */
+        .happy-hour-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: none;
+        }
+
+        /* Happy hour mode styles */
+        body.happy-hour {
+            --primary-color: #e83e8c;
+            --secondary-color: #fd7e14;
+        }
+
+        body.happy-hour .job-posting {
+            border-left: 5px solid #fd7e14;
+            transform: rotate(-1deg);
+        }
+
+        body.happy-hour header {
+            background-image: linear-gradient(45deg, #e83e8c, #fd7e14);
+        }
+
+        body.happy-hour .service-card {
+            transform: rotate(2deg);
+        }
+
+        /* Different hero image for happy hour mode */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/600?text=Corporate Meeting') center/cover;
+            transition: background 0.5s ease;
+        }
+
+        body.happy-hour .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1200/600?text=Office Party!') center/cover;
+        }
+
+        /* Different about section image for happy hour mode */
+        .about-image img {
+            content: url('/api/placeholder/500/300?text=Business Team');
+            transition: content 0.5s ease;
+        }
+
+        body.happy-hour .about-image img {
+            content: url('/api/placeholder/500/300?text=Happy Hour');
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        #thanksModal h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<header>
+    <div class="container header-content">
+        <div class="logo">
+            <div>STRICTLY <span>BUSINESS</span> CORP</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Our Solutions</a></li>
+                <li><a href="#careers">Careers</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Buzzword Ticker -->
+<div class="buzzword-container">
+    <div class="buzzword-scroll">
+        <span class="buzzword">SYNERGY</span>
+        <span class="buzzword">DISRUPTION</span>
+        <span class="buzzword">INNOVATION</span>
+        <span class="buzzword">BLOCKCHAIN</span>
+        <span class="buzzword">PARADIGM SHIFT</span>
+        <span class="buzzword">THOUGHT LEADERSHIP</span>
+        <span class="buzzword">LEVERAGE</span>
+        <span class="buzzword">CORE COMPETENCIES</span>
+        <span class="buzzword">GROWTH HACKING</span>
+        <span class="buzzword">DEEP DIVE</span>
+        <span class="buzzword">CIRCLE BACK</span>
+        <span class="buzzword">BANDWIDTH</span>
+        <span class="buzzword">DELIVERABLES</span>
+        <span class="buzzword">KPIs</span>
+        <span class="buzzword">ROI</span>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container hero-content">
+        <h1>Empowering Business <span>Synergy</span></h1>
+        <p>Disrupting markets through innovative solutions and strategic pivoting since 2025.</p>
+        <a href="#careers" class="btn">JOIN OUR TEAM</a>
+    </div>
+</section>
+
+<!-- Stock ticker -->
+<div class="ticker-tape">
+    <div class="ticker-content">
+        $BIZZ +420.69 (69.42%) | SYNERGY INDEX +42.0 | INNOVATION RATE: UNPRECEDENTED | DISRUPTION LEVEL: MAXIMUM | QUARTERLY EARNINGS REPORT: CONFIDENTIAL | MANAGEMENT BUZZWORDS: TRENDING UPWARD | HAPPY HOUR PROXIMITY: IMMINENT
+    </div>
+</div>
+
+<!-- About Section -->
+<section id="about" class="about">
+    <div class="container">
+        <div class="section-header">
+            <h2>About Strictly Business</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>At Strictly Business Corporation, we pride ourselves on being a dynamic, synergistic, top-of-the-line company that is more like a family. Our mission is to optimize the full spectrum of corporate solutions through disruptive innovation and strategic alignment of core values.</p>
+                <p>Founded on the principles of maximizing shareholder value while leveraging cross-functional team dynamics, we specialize in formulating out-of-this-world user platform experiences and core competencies.</p>
+                <p>Our hyperlocal big data ROI promises to meet and extend customer bandwidth for any touchpoint of their customer journey.</p>
+            </div>
+            <div class="about-image">
+                <img alt="Strictly Business Corporate Team">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services">
+    <div class="container">
+        <div class="section-header">
+            <h2>Our Business Solutions</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Strategic Synergy Optimization</h3>
+                <p>We leverage cross-functional alignments to proactively enhance your company's vertical integration strategies.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>Disruptive Innovation Platforms</h3>
+                <p>Our proprietary innovation frameworks enable your business to pivot at scale and disrupt established market paradigms.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💼</div>
+                <h3>Executive Bandwidth Solutions</h3>
+                <p>Empower C-suite leadership with executive coaching that amplifies thought leadership and maximizes organizational potential.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Careers Section -->
+<section id="careers" class="careers">
+    <div class="container">
+        <div class="section-header">
+            <h2>Career Opportunities</h2>
+        </div>
+
+        <div class="job-posting">
+            <h3>Strictly Business Corporation Internship</h3>
+            <p>Come work for a dynamic, synergistic, top of the line company that is more like a family. We specialize in formulating out of this world user platform experiences and core competencies. Our hyperlocal big data ROI promises to meet and extend customer bandwidth for any touchpoint of their customer journey. Circle back with us to think outside the box and move the needle on our corporate journey.</p>
+
+            <div class="job-section">
+                <h4>Job Duties:</h4>
+                <ul>
+                    <li>Pivoting within the scope of aligned goals and values.</li>
+                    <li>Other duties as assigned.</li>
+                    <li>Maintaining professionalism</li>
+                </ul>
+            </div>
+
+            <div class="job-section">
+                <h4>Qualifications:</h4>
+                <ul>
+                    <li>Positive can-do attitude</li>
+                    <li>10 years intern experience</li>
+                    <li>Masters Degree preferred</li>
+                    <li>Ability to lift 75 pounds</li>
+                    <li>Ability to shotgun</li>
+                    <li>Willing to work long nights and weekends</li>
+                </ul>
+            </div>
+
+            <div class="job-section">
+                <h4>Compensation:</h4>
+                <ul>
+                    <li>Experience</li>
+                    <li>Exposure</li>
+                    <li>Field food</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="application-form">
+            <h3>Intern Application</h3>
+            <p>Please complete the following application form to be considered for our prestigious internship program:</p>
+
+            <form id="internshipForm">
+                <div class="form-group">
+                    <label for="name">Full Name (As it appears on your corporate ID):</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address (Corporate preferred):</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">Years of Intern Experience:</label>
+                    <input type="number" id="experience" name="experience" min="10" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="shotgun">Shotgun Personal Record (seconds):</label>
+                    <input type="number" id="shotgun" name="shotgun" step="0.1" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="coverLetter">Why Should We Hire You? (Be brief, we have meetings to attend):</label>
+                    <textarea id="coverLetter" name="coverLetter" class="form-control" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="buzzwords">List your top 5 corporate buzzwords (comma separated):</label>
+                    <input type="text" id="buzzwords" name="buzzwords" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Strictly Business Corp</h3>
+                <p>Synergizing excellence since 2025</p>
+                <p>1234 Corporate Plaza</p>
+                <p>Business District, BZ 90210</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>Phone: (555) BUSINESS</li>
+                    <li>Email: careers.strictlybusiness@gmail.com</li>
+                    <li>Hours: 9am - 5pm (Happy Hour starts at 4:30)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Strictly Business Corporation. All Synergies Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Happy Hour Toggle Button -->
+<button class="happy-hour-toggle" id="happyHourToggle">Switch to Happy Hour Mode</button>
+
+<!-- Thanks Modal -->
+<div id="thanksModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <h3>Application Submitted!</h3>
+        <p>Thank you for applying to the Strictly Business Internship Program.</p>
+        <p>Our team of professional synergizers will review your application and circle back if your corporate bandwidth aligns with our strategic initiatives.</p>
+        <p>Please allow 4-6 business weeks for a response.</p>
+    </div>
+</div>
+
+<script>
+    // Happy Hour Toggle
+    const happyHourToggle = document.getElementById('happyHourToggle');
+    const body = document.body;
+
+    happyHourToggle.addEventListener('click', function() {
+        body.classList.toggle('happy-hour');
+
+        if (body.classList.contains('happy-hour')) {
+            happyHourToggle.textContent = 'Return to Business Mode';
+        } else {
+            happyHourToggle.textContent = 'Switch to Happy Hour Mode';
+        }
+    });
+
+    // Form submission
+    const internshipForm = document.getElementById('internshipForm');
+    const thanksModal = document.getElementById('thanksModal');
+    const closeModal = document.getElementById('closeModal');
+
+    internshipForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Get form data
+        const formData = new FormData(internshipForm);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const experience = formData.get('experience');
+        const shotgun = formData.get('shotgun');
+        const coverLetter = formData.get('coverLetter');
+        const buzzwords = formData.get('buzzwords');
+
+        // Construct email body
+        const emailBody = `
+Name: ${name}
+Email: ${email}
+Years of Intern Experience: ${experience}
+Shotgun Time (seconds): ${shotgun}
+Cover Letter:
+${coverLetter}
+
+Top 5 Buzzwords:
+${buzzwords}
+`;
+
+        // Send email using mailto
+        const mailtoLink = `mailto:careers.strictlybusiness@gmail.com?subject=Internship Application: ${name}&body=${encodeURIComponent(emailBody)}`;
+        window.location.href = mailtoLink;
+
+        // Show thank you modal
+        thanksModal.style.display = 'flex';
+
+        // Reset form
+        internshipForm.reset();
+    });
+
+    // Close modal
+    closeModal.addEventListener('click', function() {
+        thanksModal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function(e) {
+        if (e.target === thanksModal) {
+            thanksModal.style.display = 'none';
+        }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+</body>
+</html>
